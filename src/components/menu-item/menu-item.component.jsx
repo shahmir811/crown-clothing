@@ -1,12 +1,16 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './menu-item.styles.scss';
 
 const MenuItem = props => {
-  const { title, imageUrl, size } = props.section;
+  const { title, imageUrl, size, linkUrl, history, match } = props;
 
   return (
-    <div className={`${size} menu-item`}>
+    <div
+      className={`${size} menu-item`}
+      onClick={() => history.push(`${match.url}${linkUrl}`)}
+    >
       <div
         className='background-image'
         style={{ backgroundImage: `url(${imageUrl})` }}
@@ -19,4 +23,6 @@ const MenuItem = props => {
   );
 };
 
-export default MenuItem;
+// withRouter is a high order component
+// withRouter we have access to history and match objects of react-router-dom
+export default withRouter(MenuItem);
