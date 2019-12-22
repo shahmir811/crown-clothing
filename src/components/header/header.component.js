@@ -9,7 +9,6 @@ import { auth } from '../../firebase/firebase.utils';
 
 const Header = props => {
   const { currentUser } = props.user;
-  console.log('Current User: ', currentUser);
 
   return (
     <div className='header'>
