@@ -9,7 +9,7 @@ export const addItemToCart = (cartItems, newCartItemToAdd) => {
 
     return cartItems.map(cartItem => {
       return cartItem.id === newCartItemToAdd.id
-        ? { ...cartItem, quatity: cartItem.quantity + 1 }
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem;
     });
   }
