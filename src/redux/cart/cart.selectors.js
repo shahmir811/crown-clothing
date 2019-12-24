@@ -10,6 +10,12 @@ export const selectCartItems = createSelector(
   cart => cart.cartItems //second argument is a function that will return the value we want out of this selector
 );
 
+// 3
+export const selectCardHidden = createSelector(
+  [selectItems],
+  cart => cart.hidden
+);
+
 // 3 - Calculate the count of cartItems
 export const selectCartItemsCount = createSelector(
   [selectCartItems],
@@ -18,4 +24,12 @@ export const selectCartItemsCount = createSelector(
       (initialValue, cartItems) => initialValue + cartItems.quantity,
       0
     )
+);
+
+export const selectCartTotal = createSelector([selectCartItems], cart =>
+  cart.reduce(
+    (initialValue, cartItem) =>
+      initialValue + cartItem.quantity * cartItem.price,
+    0
+  )
 );
