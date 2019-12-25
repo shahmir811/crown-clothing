@@ -5,14 +5,24 @@ import { composeWithDevTools } from 'redux-devtools-extension'; // for viewing r
 
 import rootReducer from './root-reducer';
 
-const middlewares = [logger];
-
 // const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(...middlewares))
-);
+const middlewares = [];
+let makingStore = null;
+
+if (process.env.NODE_ENV === 'development') {
+  // during development
+  middlewares.push(logger);
+  makingStore = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(...middlewares))
+  );
+} else {
+  // during production
+  makingStore = createStore(rootReducer, applyMiddleware(...middlewares));
+}
+
+export const store = makingStore;
 
 // persistor is the persisted version of REDUX store
 export const persistor = persistStore(store);
