@@ -1,8 +1,28 @@
-import { UPDATE_COLLECTIONS } from './shops.types';
+import {
+  FETCH_COLLECTIONS_START,
+  FETCH_COLLECTIONS_SUCCESS,
+  FETCH_COLLECTIONS_FAILURE
+} from './shops.types';
 
 export const updateCollections = collections => {
   return {
-    type: UPDATE_COLLECTIONS,
+    type: FETCH_COLLECTIONS_SUCCESS,
     payload: collections
   };
 };
+
+export const fetchCollectionsStart = () => {
+  return {
+    type: FETCH_COLLECTIONS_START
+  };
+};
+
+export const fetchCollectionsSuccess = collections => ({
+  type: FETCH_COLLECTIONS_SUCCESS,
+  payload: collections
+});
+
+export const fetchCollectionsFailure = errorMessage => ({
+  type: FETCH_COLLECTIONS_FAILURE,
+  payload: errorMessage
+});
