@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import './cart-item.styles.scss';
 
@@ -18,4 +18,4 @@ const CartItem = props => {
   );
 };
 
-export default CartItem;
+export default memo(CartItem);

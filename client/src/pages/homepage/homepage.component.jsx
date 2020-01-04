@@ -4,6 +4,7 @@ import { HomepageContainer } from './homepage.styles';
 import Directory from '../../components/directory/directory.component';
 
 const Homepage = () => {
+  // throw Error;
   return (
     <HomepageContainer>
       <Directory />
